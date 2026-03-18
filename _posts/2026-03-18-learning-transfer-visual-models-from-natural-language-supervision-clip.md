@@ -41,11 +41,11 @@
 - Loss Function: 이미지와 텍스트 각각에 대한 Cross-Entropy Loss의 평균 
 	![CLIP loss](/assets/img/CLIP_loss.png)
 $$
-	\begin{align*}
-	\mathcal{L}_i &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{k,j} / \tau)} \\
-	\mathcal{L}_t &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{j,k} / \tau)} \\
-	\mathcal{L} &= \frac{\mathcal{L}_i + \mathcal{L}_t}{2}
-	\end{align*}
+\begin{align*}
+	    \mathcal{L}_i &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{k,j} / \tau)} \\
+	    \mathcal{L}_t &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{j,k} / \tau)} \\
+	    \mathcal{L} &= \frac{\mathcal{L}_i + \mathcal{L}_t}{2}
+	    \end{align*}
 $$
 	- $s_{k,j}$는 이미지 $k$와 텍스트 $j$ 임베딩 간의 코사인 유사도
 	- Algorithm
@@ -57,15 +57,13 @@ $$
 ## 4. Experiments & Results 
 - Datasets: 사전학습에는 WIT(400M)를 사용하고, 평가는 ImageNet, CIFAR-10/100, STL-10, Pascal VOC 등 30개 이상의 데이터셋에서 수행
 - Baselines: 완전히 지도 학습된 ResNet-50, 기존의 Zero-shot 방식(Visual N-Grams) 등.
-- Performance  
-		![CLIP zeroshot](/assets/img/CLIP_zeroshot.png)
+- Performance
+	![CLIP zeroshot](/assets/img/CLIP_zeroshot.png) ![CLIP robustness](/assets/img/CLIP_robustness.png)
 	- Zero-shot ImageNet: 76.2% 정확도로 기존의 지도 학습된 ResNet-50과 동등한 수준 달성.
-		![CLIP robustness](/assets/img/CLIP_robustness.png)
 	- Robustness: ImageNet-A, ImageNet-R 등 분포가 변화된 데이터셋에서 일반 지도 학습 모델보다 압도적으로 강건함.
 - Ablation Study  
-		![CLIP_efficiency](/assets/img/CLIP_efficiency.png)
+	![CLIP_efficiency](/assets/img/CLIP_efficiency.png) ![CLIP prompvsensemble](/assets/img/CLIP_prompvsensemble.png)
 	- Contrastive 방식이 Generative(Captioning) 방식보다 학습 효율이 4배 이상 높음을 증명.
-		![CLIP prompvsensemble](/assets/img/CLIP_prompvsensemble.png)
 	- 프롬프트 엔지니어링("A photo of a ...")이 단순 단어 사용보다 성능을 5% 가량 향상시킴.
 ## Authors & Genealogy
 - Advisor/Lab: OpenAI (Alec Radford는 GPT-1, 2, 3의 핵심 저자).
