@@ -1,4 +1,6 @@
-﻿[CLIP paper (2021)](https://arxiv.org/abs/2103.00020) 리뷰 
+﻿# Learnin Transfer Visual Models From Natural Language Supervision (CLIP) 
+
+[CLIP paper (2021)](https://arxiv.org/abs/2103.00020) 리뷰 
 
 ## 기본 정보 
 - 논문 제목: Learning Transferable Visual Models From Natural Language Supervision
@@ -36,23 +38,14 @@
 		- $N$개의 실제 쌍의 cosine similarity ↑
 		- $N$개의 가짜 쌍의 cosine similarity ↓ 
 		-  두 similarity의 symmetric cross entropy loss를 최적화 
-- Loss Function: 이미지와 텍스트 각각에 대한 Cross-Entropy Loss의 평균  
-	![CLIP loss](/assets/img/CLIP_loss.png)  
+- Loss Function: 이미지와 텍스트 각각에 대한 Cross-Entropy Loss의 평균 
+	![CLIP loss](/assets/img/CLIP_loss.png)
 $$
-\begin{aligned}
-  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
-  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
-  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
-      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
-      \vdots & \ddots & \vdots \\
-      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
-    \end{array} \right)
-  \left( \begin{array}{c}
-      y_1 \\
-      \vdots \\
-      y_n
-    \end{array} \right)
-\end{aligned}
+	\begin{aligned}
+	\mathcal{L}_i &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{k,j} / \tau)} \\
+	\mathcal{L}_t &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{j,k} / \tau)} \\
+	\mathcal{L} &= \frac{\mathcal{L}_i + \mathcal{L}_t}{2} \\
+	\end{aligned}
 $$
 	- $s_{k,j}$는 이미지 $k$와 텍스트 $j$ 임베딩 간의 코사인 유사도
 	- Algorithm
@@ -65,26 +58,27 @@ $$
 - Datasets: 사전학습에는 WIT(400M)를 사용하고, 평가는 ImageNet, CIFAR-10/100, STL-10, Pascal VOC 등 30개 이상의 데이터셋에서 수행
 - Baselines: 완전히 지도 학습된 ResNet-50, 기존의 Zero-shot 방식(Visual N-Grams) 등.
 - Performance
-<div style="display: flex; gap: 10px;">
-  <img src="/assets/img/CLIP_zeroshot.png" width="49%">
-  <img src="/assets/img/CLIP_robustness.png" width="49%">
-</div>
-	- Zero-shot ImageNet: 76.2% 정확도로 기존의 지도 학습된 ResNet-50과 동등한 수준 달성.
+		<div style="display: flex; gap: 10px;">
+		  <img src="/assets/img/CLIP_zeroshot.png" width="49%">
+		  <img src="/assets/img/CLIP_robustness.png" width="49%">
+		</div>  
+	- Zero-shot ImageNet: 76.2% 정확도로 기존의 지도 학습된 ResNet-50과 동등한 수준 달성.    
+
 	- Robustness: ImageNet-A, ImageNet-R 등 분포가 변화된 데이터셋에서 일반 지도 학습 모델보다 압도적으로 강건함.
 - Ablation Study  
-<div style="display: flex; gap: 10px;">
-  <img src="/assets/img/CLIP_efficiency.png" width="49%">
-  <img src="/assets/img/CLIP_prompvsensemble.png" width="49%">
-</div>
-	- Contrastive 방식이 Generative(Captioning) 방식보다 학습 효율이 4배 이상 높음을 증명.
-	- 프롬프트 엔지니어링("A photo of a ...")이 단순 단어 사용보다 성능을 5% 가량 향상시킴.
+		<div style="display: flex; gap: 10px;">
+		  <img src="/assets/img/CLIP_efficiency.png" width="49%">
+		  <img src="/assets/img/CLIP_prompvsensemble.png" width="49%">
+		</div>
+	- Contrastive 방식이 Generative(Captioning) 방식보다 학습 효율이 4배 이상 높음을 증명.  
+	- 프롬프트 엔지니어링("A photo of a ...")이 단순 단어 사용보다 성능을 5% 가량 향상시킴.  
 ## Authors & Genealogy
-- Advisor/Lab: OpenAI (Alec Radford는 GPT-1, 2, 3의 핵심 저자).
-- Related Work
-	- ConVIRT (Zhang et al., 2020): 의료 도메인에서 먼저 제안된 대조 학습 방식.
-	- VirTex / ICMLM: 텍스트를 통해 비전 모델을 학습하려던 초기 시도들.
-- Follow-up
-	- DALL-E: CLIP을 사용하여 생성된 이미지와 텍스트 간의 일치도를 평가
-	- Stable Diffusion: CLIP의 Text Encoder를 조건부 입력 생성기로 사용.
+- Advisor/Lab: OpenAI (Alec Radford는 GPT-1, 2, 3의 핵심 저자).  
+- Related Work  
+	- ConVIRT (Zhang et al., 2020): 의료 도메인에서 먼저 제안된 대조 학습 방식.  
+	- VirTex / ICMLM: 텍스트를 통해 비전 모델을 학습하려던 초기 시도들.  
+- Follow-up  
+	- DALL-E: CLIP을 사용하여 생성된 이미지와 텍스트 간의 일치도를 평가  
+	- Stable Diffusion: CLIP의 Text Encoder를 조건부 입력 생성기로 사용.  
 	- ALIGN (Google): 1.8B 규모의 더 큰 데이터셋으로 CLIP을 확장함.
 
