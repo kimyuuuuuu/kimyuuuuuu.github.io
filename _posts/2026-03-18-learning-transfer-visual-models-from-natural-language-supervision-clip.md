@@ -42,8 +42,8 @@
 	![CLIP loss](/assets/img/CLIP_loss.png)
 $$
 \begin{aligned}
-\mathcal{L}_i &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{k,j} / \tau)} \\
-\mathcal{L}_t &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{j,k} / \tau)} \\
+\mathcal{L}_i &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{k,j} / \tau)} \\\\
+\mathcal{L}_t &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{j,k} / \tau)} \\\\
 \mathcal{L} &= \frac{\mathcal{L}_i + \mathcal{L}_t}{2}
 \end{aligned}
 $$
