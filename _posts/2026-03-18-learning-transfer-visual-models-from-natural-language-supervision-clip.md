@@ -1,9 +1,4 @@
-﻿---
-title: Learnin Transfer Visual Models From Natural Language Supervision (CLIP) 
-date: 2026-03-18
-use_math: true
----
-[CLIP paper (2021)](https://arxiv.org/abs/2103.00020) 리뷰 
+﻿[CLIP paper (2021)](https://arxiv.org/abs/2103.00020) 리뷰 
 
 ## 기본 정보 
 - 논문 제목: Learning Transferable Visual Models From Natural Language Supervision
@@ -44,11 +39,20 @@ use_math: true
 - Loss Function: 이미지와 텍스트 각각에 대한 Cross-Entropy Loss의 평균  
 	![CLIP loss](/assets/img/CLIP_loss.png)  
 $$
-\begin{align*}
-\mathcal{L}_i &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{k,j} / \tau)} \\
-\mathcal{L}_t &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{j,k} / \tau)} \\
-\mathcal{L} &= \frac{\mathcal{L}_i + \mathcal{L}_t}{2}
-\end{align*}
+\begin{aligned}
+  & \phi(x,y) = \phi \left(\sum_{i=1}^n x_ie_i, \sum_{j=1}^n y_je_j \right)
+  = \sum_{i=1}^n \sum_{j=1}^n x_i y_j \phi(e_i, e_j) = \\
+  & (x_1, \ldots, x_n) \left( \begin{array}{ccc}
+      \phi(e_1, e_1) & \cdots & \phi(e_1, e_n) \\
+      \vdots & \ddots & \vdots \\
+      \phi(e_n, e_1) & \cdots & \phi(e_n, e_n)
+    \end{array} \right)
+  \left( \begin{array}{c}
+      y_1 \\
+      \vdots \\
+      y_n
+    \end{array} \right)
+\end{aligned}
 $$
 	- $s_{k,j}$는 이미지 $k$와 텍스트 $j$ 임베딩 간의 코사인 유사도
 	- Algorithm
