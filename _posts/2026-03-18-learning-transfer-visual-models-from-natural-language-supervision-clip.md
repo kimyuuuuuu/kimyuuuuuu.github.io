@@ -1,4 +1,9 @@
-﻿# Learnin Transfer Visual Models From Natural Language Supervision (CLIP) 
+﻿---
+title: "Learning Transfer Visual Models From Natural Language Supervision (CLIP)"
+date: 2026-03-18
+math: true
+---
+# Learnin Transfer Visual Models From Natural Language Supervision (CLIP) 
 
 [CLIP paper (2021)](https://arxiv.org/abs/2103.00020) 리뷰 
 
@@ -39,7 +44,7 @@
 		- $N$개의 가짜 쌍의 cosine similarity ↓ 
 		-  두 similarity의 symmetric cross entropy loss를 최적화 
 - Loss Function: 이미지와 텍스트 각각에 대한 Cross-Entropy Loss의 평균 
-	![CLIP loss](/assets/img/CLIP_loss.png)
+![CLIP loss](/assets/img/CLIP_loss.png)
 $$
 	\begin{aligned}
 	\mathcal{L}_i &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{k,j} / \tau)} \\
