@@ -59,16 +59,16 @@ $$
 - Baselines: 완전히 지도 학습된 ResNet-50, 기존의 Zero-shot 방식(Visual N-Grams) 등.
 - Performance
 		<div style="display: flex; gap: 10px;">
-		  <img src="/assets/img/CLIP_zeroshot.png" width="49%">
-		  <img src="/assets/img/CLIP_robustness.png" width="49%">
-		</div>  
+ 			<img src="/assets/img/CLIP_zeroshot.png" width="49%" alt="CLIP zeroshot">
+			<img src="/assets/img/CLIP_robustness.png" width="49%" alt="CLIP robustness">
+		</div>
 	- Zero-shot ImageNet: 76.2% 정확도로 기존의 지도 학습된 ResNet-50과 동등한 수준 달성.    
 
 	- Robustness: ImageNet-A, ImageNet-R 등 분포가 변화된 데이터셋에서 일반 지도 학습 모델보다 압도적으로 강건함.
 - Ablation Study  
 		<div style="display: flex; gap: 10px;">
-		  <img src="/assets/img/CLIP_efficiency.png" width="49%">
-		  <img src="/assets/img/CLIP_prompvsensemble.png" width="49%">
+			<img src="/assets/img/CLIP_efficiency.png" width="49%" alt="CLIP efficiency">
+			<img src="/assets/img/CLIP_prompvsensemble.png" width="49%" alt="CLIP prompt vs ensemble">
 		</div>
 	- Contrastive 방식이 Generative(Captioning) 방식보다 학습 효율이 4배 이상 높음을 증명.  
 	- 프롬프트 엔지니어링("A photo of a ...")이 단순 단어 사용보다 성능을 5% 가량 향상시킴.  
