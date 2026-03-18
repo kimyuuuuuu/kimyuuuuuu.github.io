@@ -40,11 +40,13 @@
 		-  두 similarity의 symmetric cross entropy loss를 최적화 
 - Loss Function: 이미지와 텍스트 각각에 대한 Cross-Entropy Loss의 평균  
 	![CLIP loss](/assets/img/CLIP_loss.png)  
-\[\begin{align*}
+$$
+\begin{align*}
 	    \mathcal{L}_i &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{k,j} / \tau)} \\
 	    \mathcal{L}_t &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{j,k} / \tau)} \\
 	    \mathcal{L} &= \frac{\mathcal{L}_i + \mathcal{L}_t}{2}
-	    \end{align*}\]
+	    \end{align*}
+$$
 	- $s_{k,j}$는 이미지 $k$와 텍스트 $j$ 임베딩 간의 코사인 유사도
 	- Algorithm
 		1. 이미지와 텍스트를 각각 인코딩
