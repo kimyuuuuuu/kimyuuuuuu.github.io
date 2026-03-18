@@ -1,10 +1,4 @@
-﻿---
-title: "Learnin Transfer Visual Models From Natural Language Supervision (CLIP)"
-date: 2026-03-18
-math: true
----
-
-# Learnin Transfer Visual Models From Natural Language Supervision (CLIP) 
+﻿# Learnin Transfer Visual Models From Natural Language Supervision (CLIP) 
 
 [CLIP paper (2021)](https://arxiv.org/abs/2103.00020) 리뷰 
 
@@ -47,11 +41,11 @@ math: true
 - Loss Function: 이미지와 텍스트 각각에 대한 Cross-Entropy Loss의 평균 
 	![CLIP loss](/assets/img/CLIP_loss.png)
 $$
-\begin{align*}
-\mathcal{L}_i &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{k,j} / \tau)} \\
-\mathcal{L}_t &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{j,k} / \tau)} \\
-\mathcal{L} &= \frac{\mathcal{L}_i + \mathcal{L}_t}{2}
-\end{align*}
+	\begin{align*}
+	\mathcal{L}_i &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{k,j} / \tau)} \\
+	\mathcal{L}_t &= -\frac{1}{N} \sum_{k=1}^N \log \frac{\exp(s_{k,k} / \tau)}{\sum_{j=1}^N \exp(s_{j,k} / \tau)} \\
+	\mathcal{L} &= \frac{\mathcal{L}_i + \mathcal{L}_t}{2}
+	\end{align*}
 $$
 	- $s_{k,j}$는 이미지 $k$와 텍스트 $j$ 임베딩 간의 코사인 유사도
 	- Algorithm
