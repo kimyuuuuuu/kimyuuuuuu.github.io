@@ -1,4 +1,10 @@
-﻿# Learnin Transfer Visual Models From Natural Language Supervision (CLIP) 
+﻿---
+title: "..."
+date: 2026-03-18
+math: true
+---
+
+# Learnin Transfer Visual Models From Natural Language Supervision (CLIP) 
 
 [CLIP paper (2021)](https://arxiv.org/abs/2103.00020) 리뷰 
 
