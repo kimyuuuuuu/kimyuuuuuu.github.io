@@ -28,7 +28,7 @@ math: true
 	- "어떤 텍스트가 어떤 이미지와 짝을 이루는가"를 예측하는 대조학습으로 학습
 - Zero-shot Capability : 자연어 프롬프트만으로 새로운 태스크에서 즉시 적용 가능  
 
-## Architecture & Pipeline
+## 2. Architecture & Pipeline
 ![CLIP approach](/assets/img/CLIP_architecture.png)
 - Image Encoder(ResNet or ViT)와 Text Encoder(Masked self-attention (GPT style))가 독립적으로 존재, 각각의 출력을 공통 임베딩 공간으로 투영
 - Input/Output  
@@ -37,7 +37,7 @@ math: true
 	- Similarity: $N \times N$ 유사도 행렬 생성
 		- 대각선 : $N$개의 실제 쌍
 		- 나머지 : $N^{2} - N$개의 가짜 쌍  
-## Methodology & Theory 
+## 3. Methodology & Theory 
 - Contrastive learning: 주어진 이미지-텍스트가 쌍이 맞는가? 
 	- $N$개의 (이미지, 텍스트) 배치 중 positive pair를 예측 
 		- $N$개의 실제 쌍의 cosine similarity ↑
