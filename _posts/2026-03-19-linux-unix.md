@@ -422,10 +422,12 @@ tags: [linux, unix, commands, terminal, bash]
 | 명령어/플래그 | 설명 |
 |---|---|
 | `sudo [명령어]` | 관리자 권한으로 실행 |
+| `cat /etc/passwd` | 서버 사용자 확인 |
 | `su - [사용자]` | 다른 유저로 전환 |
 | `useradd [사용자]` | 유저 추가 |
 | `passwd [사용자]` | 비밀번호 변경 |
 | `usermod -aG [그룹] [사용자]` | 그룹에 유저 추가 |
+| `usermod -aG sudo [사용자]` | sudo 권한 제공|
 | `groups [사용자]` | 유저의 그룹 확인 |
 | `id [사용자]` | UID, GID 정보 |
 | `whoami` | 현재 사용자 확인 |

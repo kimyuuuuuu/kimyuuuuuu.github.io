@@ -1,6 +1,7 @@
 ﻿---
 title: "Learning Transfer Visual Models From Natural Language Supervision (CLIP)"
 date: 2026-03-18
+categories: [paper-review]
 math: true
 ---
 # Learning Transfer Visual Models From Natural Language Supervision (CLIP) 
